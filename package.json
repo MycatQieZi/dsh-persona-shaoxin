@@ -1,0 +1,27 @@
+{
+  "name": "dsh-persona-shaoxin",
+  "version": "0.1.0",
+  "description": "烧心体人格插件：把 AI 市井短剧的「不烧心文学」话术注册为 DSH 系统提示词 section",
+  "type": "module",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "persona/",
+    "samples/"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "persona",
+    "shaoxin"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.4"
+  }
+}

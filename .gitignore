@@ -1,0 +1,13 @@
+node_modules/
+npm-debug.log*
+pnpm-debug.log*
+*.tgz
+.DS_Store
+.env
+.env.*
+!.env.example
+coverage/
+dist/
+lib/
+*.tsbuildinfo
+.dsh/

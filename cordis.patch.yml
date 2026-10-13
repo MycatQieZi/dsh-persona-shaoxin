@@ -1,0 +1,17 @@
+- insert:
+    - id: shaoxin-persona
+      name: dsh-persona-shaoxin
+      config:
+        # order: 1  =>  紧跟 harness 身份（-1000）之后、工具指导（1000+）之前
+        # section 不要改成 deployment:persona，会和 prompt 注册表自己的槽位冲突
+        section: deployment:shaoxin
+        order: 1
+        maxChars: 24000
+        watch: true
+        files:
+          - SOUL.md
+          - IDENTITY.md
+          - USER.md
+          - LINES.md      # 台词库，烧心体的句式引擎在这
+          - MEMORY.md
+          - TOOLS.md
