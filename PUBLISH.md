@@ -1,7 +1,23 @@
 # 发布到 SkillHub Plugin 广场
 
 SkillHub 的 `/plugins` 广场与 DSH Plugin 目录（dsh-plugin.org / DSH Plugin Hub）**同源**。
-收录不是人工表单投稿，而是**自动发现**：公开 GitHub 仓库 + `dsh-plugin` topic → 被扫描收录。
+收录不是应用商店式的人工上架，而是**自动扫描发现**：公开 GitHub 仓库 + `dsh-plugin` topic → 生成列表页。
+
+## 两个提交站，两条不同的路
+
+| 站 | 提交方式 | 机制 |
+|---|---|---|
+| deepseekplugin.org/submit | 粘贴仓库 URL 表单 | 解析元数据 → DSH 识别检查 → **即时发布**，详情页 `/plugins/[slug]` |
+| dsh-plugin.org/submit | **没有表单**。页面给的是固定 issue 模板，点按钮去开 GitHub Issue | 开 issue → 等待一个刷新周期被扫描收录 → 详情页 `/plugins/[owner]/[slug]` |
+
+**dsh-plugin.org 额外有一条硬要求**：仓库根目录必须有 `package.json`（hub 读它识别包名并校验对应 npm 包），没有就过不了自动扫描 —— 此项已满足。
+
+## 当前状态
+
+| 站 | 状态 |
+|---|---|
+| deepseekplugin.org | 已提交 |
+| dsh-plugin.org | 已开收录 issue：https://github.com/dshplugin/dsh-plugin-hub/issues/181 |
 
 ## 六项预检清单（目录在做 DSH 识别检查时认这些）
 
@@ -16,12 +32,47 @@ SkillHub 的 `/plugins` 广场与 DSH Plugin 目录（dsh-plugin.org / DSH Plugi
 
 外加一条硬要求：插件必须导出 `apply(ctx)` —— ✅。
 
-**当前唯一未完成的：到目录提交页粘贴仓库 URL**（网页操作，需人工）。
+## dsh-plugin.org 的手工提交模板（已用此模板开 issue）
 
-- https://dsh-plugin.org/submit
-- https://deepseekplugin.org/submit
+issue 标题固定为 `[Plugin submission] <owner>/<repo> — <一句话价值>`，正文：
 
-粘贴：`https://github.com/MycatQieZi/dsh-persona-shaoxin`
+```
+### Repository
+<仓库 URL>
+
+### One-line value
+<装完有什么变化，一句话>
+
+### Category
+<11 选一：UI & Experience / Sessions & Messages / Memory & Context / Tools & Capabilities /
+Skills & Agents / Workflow & Automation / Integrations & Connections / Models & Reasoning /
+Development & Operations / Data & Knowledge / Entertainment>
+
+### Install command
+<完整 CLI，如 dsh plugin --profile web add github:owner/repo>
+
+### Compatibility
+<目标 DSH 版本 / profile / 运行时；不确定就留空>
+
+### License
+### Screenshots / demo
+### Notes
+<权限、外部服务、已知限制>
+
+### Pre-submission checklist
+- [x] Repository is public
+- [x] GitHub topic `dsh-plugin` added
+- [x] README includes the install command
+- [x] Plugin exports an `apply(ctx)` module
+- [x] Repository root includes a `package.json`
+```
+
+本插件选的分类是 **Skills & Agents**（注册的是 agent 的身份与话术，不是工具能力）。
+
+## 上架后
+
+- 列表页上线后，把 README 顶部的占位换成 /submit 页给的徽章代码：
+  `[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/MycatQieZi/dsh-persona-shaoxin)`
 
 ## 步骤
 
