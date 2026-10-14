@@ -16,8 +16,31 @@ SkillHub 的 `/plugins` 广场与 DSH Plugin 目录（dsh-plugin.org / DSH Plugi
 
 | 站 | 状态 |
 |---|---|
-| deepseekplugin.org | 已提交，详情页尚未出现 |
 | dsh-plugin.org | ✅ **已收录**：https://dsh-plugin.org/plugins/mycatqiezi/dsh-persona-shaoxin · status **verified** |
+| deepseekplugin.org | ⏳ 已提交 + 已提收录 PR：https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/7331 |
+
+### deepseekplugin.org 的真相（别被回执页骗了）
+
+提交后它给的 `/plugins/submitted?slug=...` **不是正式详情页**：
+
+- 页面带 `<meta name="robots" content="noindex, follow">` —— 明确禁止索引
+- meta description 是通用的「查看社区自主提交的…」，head 里不含插件任何信息
+- 换成任意一个不存在的 slug，同样返回 200
+
+它真正的目录数据在仓库 **`awesome-dsh-plugin/awesome-dsh-plugin`**，收录方式是**提 PR**：加一个文件
+`data/plugins/<owner>__<repo>.yml`（双下划线）：
+
+```yaml
+url: https://github.com/owner/repo
+name: owner/repo
+category: identity        # 枚举见仓库 contributing.md
+description:
+  en: 'One-line description ending with a period.'
+  zh: '一句话描述，以句号结尾。'
+```
+
+CI 会校验四项：条目数 ≤3／`package.json` 声明 `dsh.bundle`（只声明 `dsh.client` 会被拒）／仓库满 1 天／README 可重新生成。
+之后维护者人工读源码，把描述里的每一句对着代码核一遍 —— **描述必须属实，夸大是唯一常见的打回原因**。 **verified** |
 
 > **踩过的坑**：详情页路径里的 owner 是**小写**的（`mycatqiezi`，不是 `MycatQieZi`），大写会 404。
 > 我一度因为这个误判成"还没收录"。另外 `/plugins/<owner>/<repo>` 这个格式是 dsh-plugin.org 独有的，
