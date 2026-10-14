@@ -16,8 +16,12 @@ SkillHub 的 `/plugins` 广场与 DSH Plugin 目录（dsh-plugin.org / DSH Plugi
 
 | 站 | 状态 |
 |---|---|
-| deepseekplugin.org | 已提交 |
-| dsh-plugin.org | 已开收录 issue：https://github.com/dshplugin/dsh-plugin-hub/issues/181 |
+| deepseekplugin.org | 已提交，详情页尚未出现 |
+| dsh-plugin.org | ✅ **已收录**：https://dsh-plugin.org/plugins/mycatqiezi/dsh-persona-shaoxin · status **verified** |
+
+> **踩过的坑**：详情页路径里的 owner 是**小写**的（`mycatqiezi`，不是 `MycatQieZi`），大写会 404。
+> 我一度因为这个误判成"还没收录"。另外 `/plugins/<owner>/<repo>` 这个格式是 dsh-plugin.org 独有的，
+> dshbase.com / dshpluginhub.ai / skillhub.cn 是别的写法，别套错。
 
 ## 六项预检清单（目录在做 DSH 识别检查时认这些）
 
