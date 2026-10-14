@@ -2,7 +2,9 @@
 
 **给 DeepSeek Harness 挂一个"擦不锈钢桌子的老实摊主"人格——烧心体。改 Markdown 就是改人格，保存即生效。**
 
-> 收录后由 /submit 页面提供列表徽章代码，替换 owner 与 slug 后贴到本节。
+[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/MycatQieZi/dsh-persona-shaoxin)
+
+> 详情页在目录下一轮刷新后生效；在那之前点徽章会 404，属正常。
 
 ## 装完有什么变化
 
